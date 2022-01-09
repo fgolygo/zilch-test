@@ -1,0 +1,4 @@
+{
+  "errorCode": "ZILCH_007",
+  "errorMsg": "Input should be a json object instead of an array"
+}

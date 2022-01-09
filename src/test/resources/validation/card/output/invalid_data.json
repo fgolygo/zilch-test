@@ -1,0 +1,17 @@
+[
+  {
+    "errorCode": "ZILCH_002",
+    "property": "name",
+    "errorMsg": "Must be between 3-30 characters"
+  },
+  {
+    "errorCode": "ZILCH_003",
+    "property": "type",
+    "errorMsg": "Allowed values: [CREDIT, DEBIT]"
+  },
+  {
+    "errorCode": "ZILCH_002",
+    "property": "surname",
+    "errorMsg": "Must be between 3-30 characters"
+  }
+]

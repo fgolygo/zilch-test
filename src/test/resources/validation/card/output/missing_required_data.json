@@ -1,0 +1,17 @@
+[
+  {
+    "errorCode": "ZILCH_001",
+    "property": "type",
+    "errorMsg": "Must not be null"
+  },
+  {
+    "errorCode": "ZILCH_001",
+    "property": "name",
+    "errorMsg": "Must not be null"
+  },
+  {
+    "errorCode": "ZILCH_001",
+    "property": "surname",
+    "errorMsg": "Must not be null"
+  }
+]
