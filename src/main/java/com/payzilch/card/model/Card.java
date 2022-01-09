@@ -12,7 +12,6 @@ public class Card {
     private int expirationMonth;
     private int expirationYear;
     private CardType type;
-    private Long accountId;
 
     public Long getId() {
         return id;
@@ -70,25 +69,4 @@ public class Card {
         this.type = type;
     }
 
-    public Long getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(Long accountId) {
-        this.accountId = accountId;
-    }
-
-    @Override
-    public String toString() {
-        return "Card{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", cardNumber='" + cardNumber + '\'' +
-                ", expirationMonth=" + expirationMonth +
-                ", expirationYear=" + expirationYear +
-                ", type=" + type +
-                ", accountId=" + accountId +
-                '}';
-    }
 }
