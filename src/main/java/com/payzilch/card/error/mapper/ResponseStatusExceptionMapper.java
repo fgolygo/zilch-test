@@ -2,7 +2,7 @@ package com.payzilch.card.error.mapper;
 
 import com.payzilch.card.error.ErrorCode;
 import com.payzilch.card.error.ErrorResponseLogger;
-import com.payzilch.card.error.SimpleError;
+import com.payzilch.card.error.Error;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,7 +18,7 @@ class ResponseStatusExceptionMapper {
     private ErrorResponseLogger errorResponseLogger;
 
     Mono<ServerResponse> map() {
-        SimpleError body = new SimpleError(ErrorCode.ZILCH_004, ErrorCode.ZILCH_004.getErrorMsg());
+        Error body = new Error(ErrorCode.ZILCH_004, ErrorCode.ZILCH_004.getErrorMsg());
         errorResponseLogger.logError(HttpStatus.NOT_FOUND.value(), body);
         return ServerResponse.status(HttpStatus.NOT_FOUND)
                 .contentType(MediaType.APPLICATION_JSON)

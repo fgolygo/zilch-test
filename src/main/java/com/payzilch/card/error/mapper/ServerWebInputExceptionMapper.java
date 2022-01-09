@@ -13,7 +13,7 @@ import org.springframework.web.reactive.function.server.ServerResponse;
 import org.springframework.web.server.ServerWebInputException;
 import reactor.core.publisher.Mono;
 import com.payzilch.card.error.ErrorCode;
-import com.payzilch.card.error.SimpleError;
+import com.payzilch.card.error.Error;
 
 @Component
 class ServerWebInputExceptionMapper {
@@ -22,25 +22,25 @@ class ServerWebInputExceptionMapper {
     private ErrorResponseLogger errorResponseLogger;
 
     Mono<ServerResponse> map(ServerWebInputException exception) {
-        SimpleError body = createSimpleError(exception);
+        Error body = createSimpleError(exception);
         errorResponseLogger.logError(HttpStatus.BAD_REQUEST.value(), body);
         return ServerResponse.status(HttpStatus.BAD_REQUEST)
                 .contentType(MediaType.APPLICATION_JSON)
                 .body(BodyInserters.fromValue(body));
     }
 
-    private static SimpleError createSimpleError(ServerWebInputException exception) {
+    private static Error createSimpleError(ServerWebInputException exception) {
         Throwable rootCause = exception.getRootCause();
 
         if (rootCause instanceof JsonParseException) {
-            return new SimpleError(ErrorCode.ZILCH_005, ErrorCode.ZILCH_005.getErrorMsg());
+            return new Error(ErrorCode.ZILCH_005, ErrorCode.ZILCH_005.getErrorMsg());
         } else if (rootCause instanceof UnrecognizedPropertyException) {
-            return new SimpleError(ErrorCode.ZILCH_006, ErrorCode.ZILCH_006.getErrorMsg());
+            return new Error(ErrorCode.ZILCH_006, ErrorCode.ZILCH_006.getErrorMsg());
         } else if (rootCause instanceof MismatchedInputException && rootCause.getMessage().contains("out of START_ARRAY")) {
-            return new SimpleError(ErrorCode.ZILCH_007, ErrorCode.ZILCH_007.getErrorMsg());
+            return new Error(ErrorCode.ZILCH_007, ErrorCode.ZILCH_007.getErrorMsg());
         }
 
-        return new SimpleError(ErrorCode.ZILCH_999, ErrorCode.ZILCH_999.getErrorMsg());
+        return new Error(ErrorCode.ZILCH_999, ErrorCode.ZILCH_999.getErrorMsg());
     }
 
 }
