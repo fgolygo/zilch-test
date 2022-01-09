@@ -16,7 +16,7 @@ public class NewCardDto {
     private String surname;
 
     @NotNull(message = "ZILCH_001")
-    @EnumValue(enumType = CardType.class, message = "ZILCH_005")
+    @EnumValue(enumType = CardType.class, message = "ZILCH_003")
     private String type;
 
     public String getName() {
